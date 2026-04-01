@@ -2,6 +2,8 @@ package com.nk.usermanagement.controller;
 
 import com.nk.usermanagement.entity.User;
 import com.nk.usermanagement.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,28 +18,31 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user){
-        return userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        User savedUser = userService.createUser(user);
+        return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id){
-        return userService.getUserById(id);
+    public ResponseEntity<User> getUser(@PathVariable Long id){
+        User user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping
-    public List<User> getAllUser(){
-        return userService.getAllUser();
+    public ResponseEntity<List<User>> getAllUser(){
+        return ResponseEntity.ok(userService.getAllUser());
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user){
-        return userService.updateUser(id,user);
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+        User updatedUser = userService.updateUser(id,user);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public ResponseEntity<String> deleteUser(@PathVariable Long id){
         userService.deleteUser(id);
-        return "User deleted successfully";
+        return ResponseEntity.ok("User deleted successfully");
     }
 }
