@@ -1,5 +1,7 @@
 package com.nk.usermanagement.controller;
 
+import com.nk.usermanagement.dto.request.UserRequest;
+import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
 import com.nk.usermanagement.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -18,14 +20,14 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User savedUser = userService.createUser(user);
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest){
+        UserResponse savedUser = userService.createUser(userRequest);
         return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id){
-        User user = userService.getUserById(id);
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id){
+        UserResponse user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
@@ -35,8 +37,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
-        User updatedUser = userService.updateUser(id,user);
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserRequest userRequest){
+        UserResponse updatedUser = userService.updateUser(id,userRequest);
         return ResponseEntity.ok(updatedUser);
     }
 
