@@ -1,6 +1,9 @@
 package com.nk.usermanagement.service.impl;
 
+import com.nk.usermanagement.dto.request.UserRequest;
+import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
+import com.nk.usermanagement.mapper.UserMapper;
 import com.nk.usermanagement.repository.UserRepository;
 import com.nk.usermanagement.service.UserService;
 import org.springframework.stereotype.Service;
@@ -11,14 +14,20 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserResponse createUser(UserRequest userRequest) {
+        User user = new User();
+        user.setName(userRequest.getName());
+        user.setEmail(userRequest.getEmail());
+        User savedUser = userRepository.save(user);
+        return userMapper.toResponse(savedUser);
     }
 
     @Override
@@ -27,16 +36,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+    public UserResponse getUserById(Long id) {
+        //return userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+        return userMapper.toResponse(user);
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        User existingUser = getUserById(id);
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        return userRepository.save(existingUser);
+    public UserResponse updateUser(Long id, UserRequest userRequest) {
+        User existingUser = userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+        existingUser.setName(userRequest.getName());
+        existingUser.setEmail(userRequest.getEmail());
+        User savedUpdatedUser = userRepository.save(existingUser);
+        return userMapper.toResponse(savedUpdatedUser);
     }
 
     @Override
