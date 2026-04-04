@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class UserRequest {
-    @NotNull(message="Name required")
+    @NotBlank(message="Name required")
     private String name;
 
     @NotBlank

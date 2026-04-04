@@ -3,6 +3,7 @@ package com.nk.usermanagement.service.impl;
 import com.nk.usermanagement.dto.request.UserRequest;
 import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
+import com.nk.usermanagement.exception.ResourceNotFoundException;
 import com.nk.usermanagement.mapper.UserMapper;
 import com.nk.usermanagement.repository.UserRepository;
 import com.nk.usermanagement.service.UserService;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse getUserById(Long id) {
         //return userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
-        User user = userRepository.findById(id).orElseThrow(()->new RuntimeException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("User not found with id :" + id));
         return userMapper.toResponse(user);
     }
 
