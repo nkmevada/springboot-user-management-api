@@ -4,6 +4,9 @@ import com.nk.usermanagement.dto.request.UserRequest;
 import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
 import com.nk.usermanagement.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +35,15 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+//    @GetMapping
+//    public ResponseEntity<List<User>> getAllUser(){
+//        return ResponseEntity.ok(userService.getAllUser());
+//    }
     @GetMapping
-    public ResponseEntity<List<User>> getAllUser(){
-        return ResponseEntity.ok(userService.getAllUser());
+    public ResponseEntity<List<UserResponse>> getAllUser(@RequestParam(defaultValue = "0") int page,
+                                                         @RequestParam(defaultValue = "2") int size){
+        Pageable pageable = PageRequest.of(page,size);
+        return ResponseEntity.ok(userService.getAllUser(pageable));
     }
 
     @PutMapping("/{id}")

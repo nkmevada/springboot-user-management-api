@@ -7,6 +7,8 @@ import com.nk.usermanagement.exception.ResourceNotFoundException;
 import com.nk.usermanagement.mapper.UserMapper;
 import com.nk.usermanagement.repository.UserRepository;
 import com.nk.usermanagement.service.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,5 +57,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<UserResponse> getAllUser(Pageable pageable) {
+        Page<User> userPage;
+        userPage = userRepository.findAll(pageable);
+       // return userPage.map(userMapper::toResponse);
+        return userPage.getContent()   // 👈 only data
+                .stream()
+                .map(userMapper::toResponse)
+                .toList();
     }
 }
