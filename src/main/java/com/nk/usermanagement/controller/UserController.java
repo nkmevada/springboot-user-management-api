@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,5 +62,14 @@ public class UserController {
     @GetMapping("/search")
     public ResponseEntity<List<UserResponse>> searchUser(@RequestParam String keyword){
         return ResponseEntity.ok(userService.searchUser(keyword));
+    }
+
+    @GetMapping("/sorted")
+    public ResponseEntity<List<UserResponse>> getAllUser(@RequestParam(defaultValue = "id") String sortBy,
+                                                         @RequestParam(defaultValue = "asc") String sortDir){
+        Sort sort = sortDir.equalsIgnoreCase("desc") ?
+                Sort.by(sortBy).descending() :
+                Sort.by(sortBy).ascending();
+        return ResponseEntity.ok(userService.getAllUser(sort));
     }
 }

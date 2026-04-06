@@ -9,6 +9,7 @@ import com.nk.usermanagement.repository.UserRepository;
 import com.nk.usermanagement.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,6 +74,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponse> searchUser(String keyword) {
         List<User> users = userRepository.findByNameContainingIgnoreCase(keyword);
+        return users.stream().map(userMapper::toResponse).toList();
+    }
+
+    @Override
+    public List<UserResponse> getAllUser(Sort sort) {
+        List<User> users = userRepository.findAll(sort);
         return users.stream().map(userMapper::toResponse).toList();
     }
 }
