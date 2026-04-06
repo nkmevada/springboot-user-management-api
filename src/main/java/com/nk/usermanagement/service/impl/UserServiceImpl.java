@@ -69,4 +69,10 @@ public class UserServiceImpl implements UserService {
                 .map(userMapper::toResponse)
                 .toList();
     }
+
+    @Override
+    public List<UserResponse> searchUser(String keyword) {
+        List<User> users = userRepository.findByNameContainingIgnoreCase(keyword);
+        return users.stream().map(userMapper::toResponse).toList();
+    }
 }

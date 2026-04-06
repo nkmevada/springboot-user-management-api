@@ -57,4 +57,9 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.ok("User deleted successfully");
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<UserResponse>> searchUser(@RequestParam String keyword){
+        return ResponseEntity.ok(userService.searchUser(keyword));
+    }
 }
