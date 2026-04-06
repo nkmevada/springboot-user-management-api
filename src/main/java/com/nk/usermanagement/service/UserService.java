@@ -5,6 +5,7 @@ import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface UserService {
     void deleteUser(Long id);
     List<UserResponse> getAllUser(Pageable pageable);
     List<UserResponse> searchUser(String keyword);
+    List<UserResponse> getAllUser(Sort sort);
 }
