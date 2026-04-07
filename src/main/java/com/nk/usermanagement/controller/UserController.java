@@ -4,6 +4,8 @@ import com.nk.usermanagement.dto.request.UserRequest;
 import com.nk.usermanagement.dto.response.UserResponse;
 import com.nk.usermanagement.entity.User;
 import com.nk.usermanagement.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
     private final  UserService userService;
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -26,12 +29,14 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest){
+        logger.info("Receive the request to create user");
         UserResponse savedUser = userService.createUser(userRequest);
         return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUser(@PathVariable Long id){
+        logger.info("Receive the request to fetch data for user with id:{}",id);
         UserResponse user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
@@ -49,18 +54,21 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(@Valid @PathVariable Long id, @RequestBody UserRequest userRequest){
+        logger.info("Receive request for update user data with id: {}",id);
         UserResponse updatedUser = userService.updateUser(id,userRequest);
         return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id){
+        logger.info("Receive the request for delete user data with id: {}",id);
         userService.deleteUser(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 
     @GetMapping("/search")
     public ResponseEntity<List<UserResponse>> searchUser(@RequestParam String keyword){
+        logger.info("Receive the request for search the data for username with: {}",keyword);
         return ResponseEntity.ok(userService.searchUser(keyword));
     }
 
