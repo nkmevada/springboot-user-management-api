@@ -1,0 +1,45 @@
+2026-04-07T10:19:54.104-04:00  INFO 36255 --- [springboot-user-management-api] [main] u.SpringbootUserManagementApiApplication : Starting SpringbootUserManagementApiApplication using Java 24.0.2 with PID 36255 (/Users/nikimevada/Niki/Java/usermanagement/target/classes started by nikimevada in /Users/nikimevada/Niki/Java/usermanagement)
+2026-04-07T10:19:54.105-04:00 DEBUG 36255 --- [springboot-user-management-api] [main] u.SpringbootUserManagementApiApplication : Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-04-07T10:19:54.105-04:00  INFO 36255 --- [springboot-user-management-api] [main] u.SpringbootUserManagementApiApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-07T10:19:54.356-04:00  INFO 36255 --- [springboot-user-management-api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-07T10:19:54.375-04:00  INFO 36255 --- [springboot-user-management-api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 1 JPA repository interface.
+2026-04-07T10:19:54.512-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-07T10:19:54.517-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-07T10:19:54.517-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-04-07T10:19:54.537-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-07T10:19:54.538-04:00  INFO 36255 --- [springboot-user-management-api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 415 ms
+2026-04-07T10:19:54.596-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-07T10:19:54.616-04:00  INFO 36255 --- [springboot-user-management-api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.42.Final
+2026-04-07T10:19:54.626-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-07T10:19:54.710-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-07T10:19:54.719-04:00  INFO 36255 --- [springboot-user-management-api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-07T10:19:54.778-04:00  INFO 36255 --- [springboot-user-management-api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27896d3b
+2026-04-07T10:19:54.779-04:00  INFO 36255 --- [springboot-user-management-api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-07T10:19:54.799-04:00  INFO 36255 --- [springboot-user-management-api] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.13
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-07T10:19:55.046-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-07T10:19:55.073-04:00  INFO 36255 --- [springboot-user-management-api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07T10:19:55.198-04:00  WARN 36255 --- [springboot-user-management-api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-07T10:19:55.332-04:00  INFO 36255 --- [springboot-user-management-api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-04-07T10:19:55.337-04:00  INFO 36255 --- [springboot-user-management-api] [main] u.SpringbootUserManagementApiApplication : Started SpringbootUserManagementApiApplication in 1.392 seconds (process running for 1.521)
+2026-04-07T10:19:59.006-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07T10:19:59.006-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-07T10:19:59.007-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-07T10:19:59.220-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 76 ms
+2026-04-07T10:20:17.405-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-5] c.n.u.controller.UserController          : Receive the request to create user
+2026-04-07T10:20:17.437-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-5] c.n.u.service.impl.UserServiceImpl       : Creating user with email: m@yahoo.com
+2026-04-07T10:20:51.268-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-7] c.n.u.controller.UserController          : Receive request for update user data with id: 18
+2026-04-07T10:20:51.306-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-7] c.n.u.service.impl.UserServiceImpl       : Update user data with id: 18
+2026-04-07T10:21:01.751-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-8] c.n.u.controller.UserController          : Receive the request to fetch data for user with id:18
+2026-04-07T10:21:01.754-04:00  INFO 36255 --- [springboot-user-management-api] [http-nio-8080-exec-8] c.n.u.service.impl.UserServiceImpl       : Get user data with id: 18
+2026-04-07T10:21:40.250-04:00  INFO 36255 --- [springboot-user-management-api] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-07T10:21:42.261-04:00  INFO 36255 --- [springboot-user-management-api] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-04-07T10:21:42.266-04:00  INFO 36255 --- [springboot-user-management-api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-07T10:21:42.268-04:00  INFO 36255 --- [springboot-user-management-api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-07T10:21:42.269-04:00  INFO 36255 --- [springboot-user-management-api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
